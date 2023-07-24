@@ -1,6 +1,7 @@
 package check_runner
 
 import (
+	cfg "github.com/Gallrecon-Tech/email-pwnd-checker/internal/config"
 	"log"
 	"net/mail"
 )
@@ -13,7 +14,7 @@ type CheckResult struct {
 type Runner struct {
 }
 
-func (runner *Runner) CheckEmail(email string) (CheckResult, error) {
+func (runner *Runner) CheckEmail(email string, config *cfg.Config) (CheckResult, error) {
 	log.Printf("Checking email %s", email)
 	emailAddress, err := mail.ParseAddress(email)
 	if err != nil {
